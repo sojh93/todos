@@ -1,10 +1,10 @@
 <template>
     <footer class="footer">
-        <span class="todo-count">
+        <span class="footer__count">
             <strong>{{ remaining }}</strong>
             <span>{{ remaining === 1 ? ' item' : ' items' }} left</span>
         </span>
-        <ul class="filters">
+        <ul class="footer__filters">
             <li>
             <a href="#/all" :class="{ selected: visibility === 'all' }">All</a>
             </li>
@@ -15,7 +15,7 @@
             <a href="#/completed" :class="{ selected: visibility === 'completed' }">완료한 일</a>
             </li>
         </ul>
-        <button class="clear-completed" @click="removeCompleted" v-show="todos.length > remaining">
+        <button class="clearBtn" @click="removeCompleted" v-show="todos.length > remaining">
             완료한 일 지우기
         </button>
     </footer>
@@ -25,4 +25,7 @@
 </script>
 
 <style lang="scss" scoped>
+.footer {
+    width: 80vw;
+}
 </style>

@@ -11,7 +11,17 @@
                 <div class="todoList__view">
                     <input class="checkbox__toggle">
                     <label>{{todo.title}}</label>
-                    <button class="btn__delete"></button>
+                    <v-btn
+                        class="btn__delete"
+                        fab
+                        dark
+                        small
+                        color="primary"
+                    >
+                    <v-icon dark>
+                        mdi-minus
+                    </v-icon>
+                    </v-btn>
                 </div>
                 <input>
             </li>
