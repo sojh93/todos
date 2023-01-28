@@ -13,14 +13,16 @@
                     <label>{{todo.title}}</label>
                     <v-btn
                         class="btn__delete"
-                        fab
+                        rounded
                         dark
                         small
                         color="primary"
+                        width="15"
+                        height="15"
                     >
-                    <v-icon dark>
-                        mdi-minus
-                    </v-icon>
+                        <v-icon dark size="15">
+                            mdi-minus
+                        </v-icon>
                     </v-btn>
                 </div>
                 <input>
