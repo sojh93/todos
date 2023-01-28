@@ -1,17 +1,14 @@
 <template>
-  <router-view></router-view>
-  <TodosJS></TodosJS>
+<TodosPrac></TodosPrac>
 </template>
-
 <script>
-import TodosJS from './components/TodosJS.vue';
-
+import TodosPrac from './pages/TodosPrac.vue'
 
 export default {
   name: 'App',
   components: {
-    TodosJS
-}
+    TodosPrac
+  }
 }
 </script>
 
