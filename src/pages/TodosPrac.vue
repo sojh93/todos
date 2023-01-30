@@ -2,24 +2,19 @@
     <header-component></header-component>
     <input class="todoList__input" placeholder="무엇을 해야할까요?"/>
     <div class="main">
-        <v-checkbox
-            v-model="ex4"
-            label="primary"
-            color="primary"
-            value="primary"
-            hide-details
-          ></v-checkbox>
-        <input class="checkbox__all" autofocus>
-        <label>모두 완료</label>
+        <div class="checkbox__wrapper">
+            <input type="checkbox" class="checkbox__all" autofocus>
+            <label>모두 완료</label>
+        </div>
+
         <ul class="todoList">
             <li class="todoList__todo"
             v-for="todo in Todos" :key="todo.id">
                 <div class="todoList__view">
-                    <input class="checkbox__toggle">
+                    <input type="checkbox" class="checkbox__toggle">
                     <label>{{todo.title}}</label>
-                    <v-icon class="item__delete" icon="mdi-minus-circle" size="x-small"></v-icon>
+                    <button class="btn__delete">-</button>
                 </div>
-                <input>
             </li>
         </ul>
     </div>
@@ -55,7 +50,24 @@ export default {
     width: 80vw;
     height: 5vw;
 }
+.main {
+    width: 80vw;
+}
+.checkbox__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 li {
     list-style:none;
+}
+.btn__delete {
+    width: 20px;
+    height: 20px;
+    border-radius: 15px;
+    border: 1px solid gray;
+    background-color: black;
+    color: white;
+    font-size: 15px;
 }
 </style>
