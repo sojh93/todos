@@ -15,7 +15,7 @@
             <a href="#/completed" :class="{ selected: visibility === 'completed' }">완료한 일</a>
             </li>
         </ul>
-        <button class="clearBtn" @click="removeCompleted" v-show="todos.length > remaining">
+        <button class="clearBtn" @click="removeCompleted">
             완료한 일 지우기
         </button>
     </footer>
