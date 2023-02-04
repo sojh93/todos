@@ -6,13 +6,13 @@
         </span>
         <ul class="footer__filters">
             <li>
-            <a href="#/all" :class="{ selected: visibility === 'all' }">All</a>
+                <a href="#/all" :class="{ selected: visibility === 'all' }">All</a>
             </li>
             <li>
-            <a href="#/active" :class="{ selected: visibility === 'active' }">할일</a>
+                <a href="#/active" :class="{ selected: visibility === 'active' }">할일</a>
             </li>
             <li>
-            <a href="#/completed" :class="{ selected: visibility === 'completed' }">완료한 일</a>
+                <a href="#/completed" :class="{ selected: visibility === 'completed' }">완료한 일</a>
             </li>
         </ul>
         <button class="clearBtn" @click="removeCompleted">
@@ -26,6 +26,13 @@
 
 <style lang="scss" scoped>
 .footer {
-    width: 80vw;
+    width: 50vw;
+}
+.footer__filters {
+    display: flex;
+    justify-content: space-around;
+}
+li {
+    list-style:none;
 }
 </style>
