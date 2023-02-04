@@ -6,16 +6,20 @@
             <div v-show="Todos.length" class="checkbox__wrapper">
                 <input type="checkbox"  class="checkbox__all" autofocus>
                 <label>모두 완료</label>
+                <button class="btn__delete" @click="removeTodos()">-</button>
             </div>
 
             <ul class="todoList">
                 <li class="todoList__todo"
-                v-for="todo in Todos" :key="todo.id">
+                v-for="todo in Todos" :key="todo.id"
+                :class="{editing: todo === editedTodo}">
                     <div class="todoList__view">
                         <input type="checkbox" class="checkbox__toggle">
-                        <label>{{todo.title}}</label>
+                        <label @dblclick="editTodo(todo)">{{todo.title}}</label>
                         <button class="btn__delete" @click="removeTodo(todo)">-</button>
                     </div>
+                    <input v-if="todo === editedTodo" class="edit" type="text" v-model="todo.title" @vnode-mounted="({ el }) => el.focus()"
+                    @blur="doneEdit(todo)" @keyup.enter="doneEdit(todo)" @keyup.escape="cancelEdit(todo)">
                 </li>
             </ul>
         </div>
@@ -27,6 +31,12 @@
 import HeaderComponent from '../components/HeaderComponent.vue';
 import FooterComponent from '../components/FooterComponent.vue';
 
+const STORAGE_KEY = 'todoList'
+
+/* const filters = {
+    all: (todo) => Todos
+} */
+
 export default {
     name: 'TodosPrac',
     components: {
@@ -35,10 +45,10 @@ export default {
     },
     data () {
         return {
-            Todos: [
-                {id: 1, title: '할일할일할일', completed: false },
-                {id: 2, title: '할일할일할일2', completed: false },
-            ]
+            // 로컬 스토리지에서 불러오기
+            // 해당 키에 값이 없다면 ""로 할당한다.
+            Todos: JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'),
+            editedTodo: null
         }
     },
     methods: {
@@ -57,6 +67,39 @@ export default {
         removeTodo(todo) {
             this.Todos.splice(this.Todos.indexOf(todo), 1)
         },
+        removeTodos() {
+            this.Todos.length === 0
+        },
+        editTodo(todo) {
+            this.beforeEditCache = todo.title
+            this.editedTodo = todo
+        },
+        // 바뀐거 없으면 그대로, 
+        doneEdit(todo) {
+            if (!this.editedTodo) {
+                return
+            }
+            this.editedTodo = null
+            todo.title = todo.title.trim()
+            if (!todo.title) {
+                this.removeTodo(todo)
+            }
+        },
+        // edit 취소 캐시에서 수정이전 타이틀로 돌아감
+        cancelEdit(todo) {
+            this.editedTodo = null
+            todo.title = this.beforeEditCache
+        },
+
+    },
+    watch: {
+        Todos: {
+            // 로컬 스토리지에 저장
+            handler(Todos) {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(Todos))
+            },
+            deep: true
+        }
     }
 }
 </script>
