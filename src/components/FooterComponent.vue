@@ -8,6 +8,7 @@
             <ul class="footer__filters">
                 <li>
                     <a href="#/all" :class="{ selected: visibility === 'all' }">All</a>
+                    {{ footer.length }}
                 </li>
                 <li>
                     <a href="#/active" :class="{ selected: visibility === 'active' }">할일</a>
@@ -24,6 +25,15 @@
 </template>
 
 <script>
+
+export default {
+    name: 'FooterComponent',
+    props: {
+        footer: {
+            type: String
+        }
+    }
+}
 </script>
 
 <style lang="scss" scoped>

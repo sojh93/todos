@@ -23,7 +23,7 @@
                 </li>
             </ul>
         </div>
-        <footer-component></footer-component>
+        <footer-component :footer="Todos"></footer-component>
     </div>
 </template>
 
