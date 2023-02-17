@@ -1,5 +1,5 @@
 <template>
-    <h1>Todos</h1>
+    <h1 class="text-6xl">Todos</h1>
 </template>
 
 <script>

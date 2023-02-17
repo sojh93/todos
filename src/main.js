@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-
-// vuetify
+import './index.css'
 
 
 createApp(App).mount('#app')
