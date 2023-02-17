@@ -112,6 +112,9 @@ export default {
 .content__wrapper {
     width: 100%;
     
+    .input__button {
+        height: 5vw;
+    }
     .todoList__input {
         height: 5vw;
         .main {
